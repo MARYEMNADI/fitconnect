@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Liste des adhérents</title>
+    <title>Liste des séances</title>
 <style>
 
 *{
@@ -93,64 +94,66 @@ a{
 }
 
 </style>
+
 </head>
 
 <body>
 
-<h1>Liste des adhérents</h1>
+<h2>Liste des séances</h2>
 
 <p>
-    <a class="btn add" href="index.php?action=create-adherent">
-        Ajouter un adhérent
+    <a class="add" href="index.php?action=create-seance">
+        Ajouter une séance
     </a>
 </p>
 
 <table>
 
+    <thead>
+
     <tr>
         <th>ID</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Email</th>
-        <th>Téléphone</th>
-        <th>Date naissance</th>
-        <th>Date inscription</th>
+        <th>Date séance</th>
+        <th>Durée (min)</th>
+        <th>Adhérent</th>
         <th>Salle</th>
+        <th>Activité</th>
+        <th>Équipement</th>
         <th>Actions</th>
     </tr>
 
-    <?php if (!empty($adherents)): ?>
+    </thead>
 
-        <?php foreach ($adherents as $adherent): ?>
+    <tbody>
+
+    <?php foreach($seances as $seance): ?>
 
         <tr>
 
-            <td><?= $adherent->getId(); ?></td>
+            <td><?= $seance->getId(); ?></td>
 
-            <td><?= $adherent->getNom(); ?></td>
+            <td><?= $seance->getDateSeance(); ?></td>
 
-            <td><?= $adherent->getPrenom(); ?></td>
+            <td><?= $seance->getDureeMinutes(); ?></td>
 
-            <td><?= $adherent->getEmail(); ?></td>
+            <td><?= $seance->getAdherentId(); ?></td>
 
-            <td><?= $adherent->getTelephone(); ?></td>
+            <td><?= $seance->getSalleId(); ?></td>
 
-            <td><?= $adherent->getDateNaissance(); ?></td>
+            <td><?= $seance->getActiviteId(); ?></td>
 
-            <td><?= $adherent->getDateInscription(); ?></td>
-
-            <td><?= $adherent->getSalleId(); ?></td>
+            <td><?= $seance->getEquipementId(); ?></td>
 
             <td>
 
-                <a class="btn edit"
-                   href="index.php?action=edit-adherent&id=<?= $adherent->getId(); ?>">
+                <a class="edit"
+                   href="index.php?action=edit-seance&id=<?= $seance->getId(); ?>">
                     Modifier
                 </a>
 
-                <a class="btn delete"
-                   href="index.php?action=delete-adherent&id=<?= $adherent->getId(); ?>"
-                   onclick="return confirm('Voulez-vous supprimer cet adhérent ?');">
+                <a class="delete"
+                   href="index.php?action=delete-seance&id=<?= $seance->getId(); ?>"
+                   onclick="return confirm('Voulez-vous supprimer cette séance ?');">
                     Supprimer
                 </a>
 
@@ -158,17 +161,9 @@ a{
 
         </tr>
 
-        <?php endforeach; ?>
+    <?php endforeach; ?>
 
-    <?php else: ?>
-
-        <tr>
-            <td colspan="9">
-                Aucun adhérent trouvé.
-            </td>
-        </tr>
-
-    <?php endif; ?>
+    </tbody>
 
 </table>
 

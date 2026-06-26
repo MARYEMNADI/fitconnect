@@ -3,52 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des abonnements</title>
+<style>
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            margin:40px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        table{
-            width:100%;
-            border-collapse:collapse;
-            margin-top:20px;
-        }
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#333;
+    padding:40px;
+}
 
-        th,td{
-            border:1px solid #ccc;
-            padding:10px;
-            text-align:center;
-        }
+h1{
+    color:#1e3a8a;
+    margin-bottom:20px;
+}
 
-        th{
-            background:#333;
-            color:white;
-        }
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
 
-        a{
-            text-decoration:none;
-        }
+th,
+td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #e5e7eb;
+}
 
-        .btn{
-            padding:8px 15px;
-            border-radius:5px;
-            color:white;
-        }
+th{
+    background:#2563eb;
+    color:white;
+    font-size:15px;
+}
 
-        .add{
-            background:green;
-        }
+tr:nth-child(even){
+    background:#f8fafc;
+}
 
-        .edit{
-            background:orange;
-        }
+tr:hover{
+    background:#e0f2fe;
+}
 
-        .delete{
-            background:red;
-        }
-    </style>
+a{
+    text-decoration:none;
+}
+
+.btn{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:6px;
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.add{
+    background:#22c55e;
+}
+
+.add:hover{
+    background:#16a34a;
+}
+
+.edit{
+    background:#3b82f6;
+}
+
+.edit:hover{
+    background:#2563eb;
+}
+
+.delete{
+    background:#ef4444;
+}
+
+.delete:hover{
+    background:#dc2626;
+}
+
+</style>
 </head>
 
 <body>

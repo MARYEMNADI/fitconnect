@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un abonnement</title>
+    <title>Ajouter une séance</title>
 
- <style>
+   <style>
 
 *{
     margin:0;
@@ -99,45 +100,57 @@ a{
 
 <body>
 
-<h1>Ajouter un abonnement</h1>
+<h2>Ajouter une séance</h2>
 
-<form action="index.php?action=store-abonnement" method="POST">
+<form action="index.php?action=store-seance" method="POST">
 
-    <label>Type</label>
-    <select name="type" required>
-        <option value="">-- Choisir --</option>
-        <option value="mensuel">Mensuel</option>
-        <option value="trimestriel">Trimestriel</option>
-        <option value="annuel">Annuel</option>
-    </select>
+    <label>Date de séance</label>
+    <input
+        type="datetime-local"
+        name="date_seance"
+        required
+    >
 
-    <label>Date début</label>
-    <input type="date" name="date_debut" required>
-
-    <label>Date fin</label>
-    <input type="date" name="date_fin" required>
-
-    <label>Prix</label>
-    <input type="number" step="0.01" name="prix" required>
-
-    <label>Statut</label>
-    <select name="statut" required>
-        <option value="actif">Actif</option>
-        <option value="expire">Expiré</option>
-        <option value="annule">Annulé</option>
-    </select>
+    <label>Durée (minutes)</label>
+    <input
+        type="number"
+        name="duree_minutes"
+        required
+    >
 
     <label>ID Adhérent</label>
-    <input type="number" name="id_adherent" required>
+    <input
+        type="number"
+        name="id_adherent"
+        required
+    >
 
-    <br><br>
+    <label>ID Salle</label>
+    <input
+        type="number"
+        name="id_salle"
+        required
+    >
+
+    <label>ID Activité</label>
+    <input
+        type="number"
+        name="id_activite"
+        required
+    >
+
+    <label>ID Équipement</label>
+    <input
+        type="number"
+        name="id_equipement"
+    >
 
     <button type="submit">
         Enregistrer
     </button>
 
-    <a href="index.php?action=abonnements">
-        Retour
+    <a href="index.php?action=seances">
+        Annuler
     </a>
 
 </form>
