@@ -111,3 +111,20 @@ echo "<hr>";
 */
 
 echo "<h2>Tests terminés ✅</h2>";
+echo "<h2>Test Repository</h2>";
+
+$repository = new AdherentRepository();
+
+$adherents = $repository->findAll();
+
+foreach ($adherents as $adherent) {
+
+    echo "ID : " . $adherent->getId() . "<br>";
+    echo "Nom : " . $adherent->getNom() . "<br>";
+    echo "Prénom : " . $adherent->getPrenom() . "<br>";
+    echo "Email : " . $adherent->getEmail() . "<br>";
+    echo "Date naissance : " . $adherent->getDateNaissance() . "<br>";
+    echo "Date inscription : " . $adherent->getDateInscription() . "<br>";
+    echo "Salle : " . $adherent->getSalleId() . "<br>";
+    echo "<hr>";
+}
