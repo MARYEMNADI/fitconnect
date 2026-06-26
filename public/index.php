@@ -1,35 +1,63 @@
 <?php
 
 require_once __DIR__ . '/../app/Controllers/AdherentController.php';
+require_once __DIR__ . '/../app/Controllers/AbonnementController.php';
 
 $action = $_GET['action'] ?? 'adherents';
 
-$controller = new AdherentController();
+$adherentController = new AdherentController();
+$abonnementController = new AbonnementController();
 
 switch ($action) {
 
+    // Adhérents
     case 'adherents':
-        $controller->index();
+        $adherentController->index();
         break;
 
     case 'create-adherent':
-        $controller->create();
+        $adherentController->create();
         break;
 
     case 'store-adherent':
-        $controller->store();
+        $adherentController->store();
         break;
 
     case 'edit-adherent':
-        $controller->edit();
+        $adherentController->edit();
         break;
 
     case 'update-adherent':
-        $controller->update();
+        $adherentController->update();
         break;
 
     case 'delete-adherent':
-        $controller->delete();
+        $adherentController->delete();
+        break;
+
+    // Abonnements
+    case 'abonnements':
+        $abonnementController->index();
+        break;
+
+    case 'create-abonnement':
+        $abonnementController->create();
+        break;
+
+    case 'store-abonnement':
+        $abonnementController->store();
+        break;
+
+    case 'edit-abonnement':
+        $abonnementController->edit();
+        break;
+
+    case 'update-abonnement':
+        $abonnementController->update();
+        break;
+
+    case 'delete-abonnement':
+        $abonnementController->delete();
         break;
 
     default:
