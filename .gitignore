@@ -1,0 +1,33 @@
+# Dossiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*.cache
+
+# Dépendances Composer
+/vendor/
+
+# Variables d'environnement
+.env
+
+# Fichiers de configuration locaux
+config/local.php
+
+# XAMPP
+xampp/
+
+# Cache
+cache/
+tmp/
+
+# Tests
+.phpunit.result.cache
