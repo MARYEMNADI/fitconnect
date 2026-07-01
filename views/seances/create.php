@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Ajouter une séance</title>
 
-   <style>
+ <style>
 
 *{
     margin:0;

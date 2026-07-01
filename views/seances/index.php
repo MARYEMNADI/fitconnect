@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des séances</title>
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -13,10 +8,9 @@
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#f4f7fb;
     color:#333;
-    padding:40px;
 }
 
 h1{
@@ -43,8 +37,7 @@ td{
 
 th{
     background:#2563eb;
-    color:white;
-    font-size:15px;
+    color:#fff;
 }
 
 tr:nth-child(even){
@@ -52,7 +45,7 @@ tr:nth-child(even){
 }
 
 tr:hover{
-    background:#e0f2fe;
+    background:#eef4ff;
 }
 
 a{
@@ -63,109 +56,97 @@ a{
     display:inline-block;
     padding:8px 16px;
     border-radius:6px;
-    color:white;
-    font-size:14px;
+    color:#fff;
     font-weight:bold;
-    transition:0.3s;
 }
 
 .add{
     background:#22c55e;
 }
 
-.add:hover{
-    background:#16a34a;
-}
-
 .edit{
     background:#3b82f6;
-}
-
-.edit:hover{
-    background:#2563eb;
+    padding:6px 12px;
+    border-radius:5px;
+    color:white;
 }
 
 .delete{
     background:#ef4444;
+    padding:6px 12px;
+    border-radius:5px;
+    color:white;
 }
-
-.delete:hover{
-    background:#dc2626;
-}
-
 </style>
 
-</head>
+<h1>Gestion des Séances</h1>
 
-<body>
-
-<h2>Liste des séances</h2>
-
-<p>
-    <a class="add" href="index.php?action=create-seance">
-        Ajouter une séance
-    </a>
-</p>
+<a class="btn add" href="index.php?action=create-seance">
+    + Ajouter une séance
+</a>
 
 <table>
 
-    <thead>
+<thead>
 
-    <tr>
-        <th>ID</th>
-        <th>Date séance</th>
-        <th>Durée (min)</th>
-        <th>Adhérent</th>
-        <th>Salle</th>
-        <th>Activité</th>
-        <th>Équipement</th>
-        <th>Actions</th>
-    </tr>
+<tr>
+    <th>ID</th>
+    <th>Date séance</th>
+    <th>Durée (min)</th>
+    <th>Adhérent</th>
+    <th>Salle</th>
+    <th>Activité</th>
+    <th>Équipement</th>
+    <th>Actions</th>
+</tr>
 
-    </thead>
+</thead>
 
-    <tbody>
+<tbody>
 
-    <?php foreach($seances as $seance): ?>
+<?php if(!empty($seances)): ?>
 
-        <tr>
+<?php foreach($seances as $seance): ?>
 
-            <td><?= $seance->getId(); ?></td>
+<tr>
 
-            <td><?= $seance->getDateSeance(); ?></td>
+    <td><?= $seance->getId(); ?></td>
+    <td><?= $seance->getDateSeance(); ?></td>
+    <td><?= $seance->getDureeMinutes(); ?></td>
+    <td><?= $seance->getAdherentId(); ?></td>
+    <td><?= $seance->getSalleId(); ?></td>
+    <td><?= $seance->getActiviteId(); ?></td>
+    <td><?= $seance->getEquipementId(); ?></td>
 
-            <td><?= $seance->getDureeMinutes(); ?></td>
+    <td>
 
-            <td><?= $seance->getAdherentId(); ?></td>
+        <a class="edit"
+           href="index.php?action=edit-seance&id=<?= $seance->getId(); ?>">
+            Modifier
+        </a>
 
-            <td><?= $seance->getSalleId(); ?></td>
+        <a class="delete"
+           href="index.php?action=delete-seance&id=<?= $seance->getId(); ?>"
+           onclick="return confirm('Voulez-vous supprimer cette séance ?');">
+            Supprimer
+        </a>
 
-            <td><?= $seance->getActiviteId(); ?></td>
+    </td>
 
-            <td><?= $seance->getEquipementId(); ?></td>
+</tr>
 
-            <td>
+<?php endforeach; ?>
 
-                <a class="edit"
-                   href="index.php?action=edit-seance&id=<?= $seance->getId(); ?>">
-                    Modifier
-                </a>
+<?php else: ?>
 
-                <a class="delete"
-                   href="index.php?action=delete-seance&id=<?= $seance->getId(); ?>"
-                   onclick="return confirm('Voulez-vous supprimer cette séance ?');">
-                    Supprimer
-                </a>
+<tr>
+    <td colspan="8">Aucune séance trouvée.</td>
+</tr>
 
-            </td>
+<?php endif; ?>
 
-        </tr>
-
-    <?php endforeach; ?>
-
-    </tbody>
+</tbody>
 
 </table>
 
-</body>
-</html>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

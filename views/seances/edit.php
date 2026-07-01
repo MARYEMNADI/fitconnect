@@ -1,171 +1,167 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Modifier une séance</title>
+<div class="container">
 
-   <style>
+    <div class="form-container">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+        <h2>✏️ Modifier une séance</h2>
+
+        <form action="index.php?action=update-seance" method="POST">
+
+            <input
+                type="hidden"
+                name="id_seance"
+                value="<?= $seance->getId(); ?>"
+            >
+
+            <label>Date de séance</label>
+
+            <input
+                type="datetime-local"
+                name="date_seance"
+                value="<?= $seance->getDateSeance(); ?>"
+                required
+            >
+
+            <label>Durée (minutes)</label>
+
+            <input
+                type="number"
+                name="duree_minutes"
+                value="<?= $seance->getDureeMinutes(); ?>"
+                required
+            >
+
+            <label>ID Adhérent</label>
+
+            <input
+                type="number"
+                name="id_adherent"
+                value="<?= $seance->getAdherentId(); ?>"
+                required
+            >
+
+            <label>ID Salle</label>
+
+            <input
+                type="number"
+                name="id_salle"
+                value="<?= $seance->getSalleId(); ?>"
+                required
+            >
+
+            <label>ID Activité</label>
+
+            <input
+                type="number"
+                name="id_activite"
+                value="<?= $seance->getActiviteId(); ?>"
+                required
+            >
+
+            <label>ID Équipement</label>
+
+            <input
+                type="number"
+                name="id_equipement"
+                value="<?= $seance->getEquipementId(); ?>"
+            >
+
+            <div class="buttons">
+
+                <button class="btn save" type="submit">
+                    💾 Modifier
+                </button>
+
+                <a class="btn cancel"
+                   href="index.php?action=seances">
+                    Retour
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<style>
+
+.container{
+    width:90%;
+    margin:40px auto;
 }
 
-body{
-    font-family:Arial, sans-serif;
-    background:#f4f7fb;
-    color:#333;
-    padding:40px;
-}
-
-h1{
-    color:#1e3a8a;
-    margin-bottom:20px;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
+.form-container{
+    max-width:650px;
+    margin:auto;
     background:#fff;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
-th,
-td{
-    padding:14px;
+.form-container h2{
     text-align:center;
-    border-bottom:1px solid #e5e7eb;
+    color:#2563eb;
+    margin-bottom:25px;
 }
 
-th{
-    background:#2563eb;
-    color:white;
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#374151;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
     font-size:15px;
 }
 
-tr:nth-child(even){
-    background:#f8fafc;
+input:focus{
+    outline:none;
+    border-color:#2563eb;
 }
 
-tr:hover{
-    background:#e0f2fe;
-}
-
-a{
-    text-decoration:none;
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
 }
 
 .btn{
-    display:inline-block;
-    padding:8px 16px;
+    text-decoration:none;
+    border:none;
+    padding:12px 22px;
     border-radius:6px;
-    color:white;
-    font-size:14px;
+    color:#fff;
     font-weight:bold;
-    transition:0.3s;
+    cursor:pointer;
+    transition:.3s;
 }
 
-.add{
-    background:#22c55e;
-}
-
-.add:hover{
-    background:#16a34a;
-}
-
-.edit{
-    background:#3b82f6;
-}
-
-.edit:hover{
+.save{
     background:#2563eb;
 }
 
-.delete{
-    background:#ef4444;
+.save:hover{
+    background:#1d4ed8;
 }
 
-.delete:hover{
-    background:#dc2626;
+.cancel{
+    background:#6b7280;
+}
+
+.cancel:hover{
+    background:#4b5563;
 }
 
 </style>
 
-</head>
-
-<body>
-
-<h2>Modifier une séance</h2>
-
-<form action="index.php?action=update-seance" method="POST">
-
-    <input
-        type="hidden"
-        name="id_seance"
-        value="<?= $seance->getId(); ?>"
-    >
-
-    <label>Date de séance</label>
-    <input
-        type="datetime-local"
-        name="date_seance"
-        value="<?= $seance->getDateSeance(); ?>"
-        required
-    >
-
-    <label>Durée (minutes)</label>
-    <input
-        type="number"
-        name="duree_minutes"
-        value="<?= $seance->getDureeMinutes(); ?>"
-        required
-    >
-
-    <label>ID Adhérent</label>
-    <input
-        type="number"
-        name="id_adherent"
-        value="<?= $seance->getAdherentId(); ?>"
-        required
-    >
-
-    <label>ID Salle</label>
-    <input
-        type="number"
-        name="id_salle"
-        value="<?= $seance->getSalleId(); ?>"
-        required
-    >
-
-    <label>ID Activité</label>
-    <input
-        type="number"
-        name="id_activite"
-        value="<?= $seance->getActiviteId(); ?>"
-        required
-    >
-
-    <label>ID Équipement</label>
-    <input
-        type="number"
-        name="id_equipement"
-        value="<?= $seance->getEquipementId(); ?>"
-    >
-
-    <button type="submit">
-        Modifier
-    </button>
-
-    <a href="index.php?action=seances">
-        Annuler
-    </a>
-
-</form>
-
-</body>
-</html>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

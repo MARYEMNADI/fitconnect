@@ -1,134 +1,125 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - FitConnect</title>
+<style>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, Helvetica, sans-serif;
-        }
+.hero{
+    text-align:center;
+    margin:40px 0;
+}
 
-        body{
-            background:#f5f5f5;
-        }
+.hero h2{
+    color:#2c3e50;
+    font-size:36px;
+}
 
-        header{
-            background:#2c3e50;
-            color:white;
-            padding:20px;
-            text-align:center;
-        }
+.hero p{
+    color:#666;
+    margin-top:10px;
+    font-size:18px;
+}
 
-        .container{
-            width:90%;
-            margin:30px auto;
-        }
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin:40px;
+}
 
-        .cards{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-            gap:20px;
-        }
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
 
-        .card{
-            background:white;
-            padding:25px;
-            border-radius:10px;
-            text-align:center;
-            box-shadow:0 0 10px rgba(0,0,0,.1);
-        }
+.card:hover{
+    transform:translateY(-8px);
+}
 
-        .card h2{
-            color:#3498db;
-            margin-bottom:10px;
-        }
+.card h3{
+    color:#3498db;
+    margin-bottom:15px;
+    font-size:24px;
+}
 
-        .card p{
-            color:#666;
-            margin-bottom:20px;
-        }
+.card .count{
+    font-size:50px;
+    font-weight:bold;
+    color:#2c3e50;
+    margin:20px 0;
+}
 
-        .card a{
-            text-decoration:none;
-            background:#3498db;
-            color:white;
-            padding:10px 20px;
-            border-radius:5px;
-        }
+.card p{
+    color:#666;
+    margin-bottom:20px;
+}
 
-        .card a:hover{
-            background:#2980b9;
-        }
-    </style>
+.btn{
+    display:inline-block;
+    background:#3498db;
+    color:#fff;
+    text-decoration:none;
+    padding:12px 25px;
+    border-radius:6px;
+}
 
-</head>
+.btn:hover{
+    background:#2980b9;
+}
 
-<body>
+</style>
 
-<header>
-    <h1>FitConnect Dashboard</h1>
-</header>
+<div class="hero">
+    <h2>Bienvenue sur FitConnect</h2>
+    <p>Système de gestion d'une salle de sport</p>
+</div>
 
-<div class="container">
+<div class="cards">
 
-    <div class="cards">
+    <div class="card">
+        <h3>👤 Adhérents</h3>
 
-        <div class="card">
-            <h2>Adhérents</h2>
-            <p>Gestion des adhérents</p>
-            <a href="index.php?action=adherents">
-                Ouvrir
-            </a>
+        <div class="count">
+            <?= $totalAdherents ?>
         </div>
 
-        <div class="card">
-            <h2>Abonnements</h2>
-            <p>Gestion des abonnements</p>
-            <a href="index.php?action=abonnements">
-                Ouvrir
-            </a>
+        <p>Nombre total des adhérents</p>
+
+        <a class="btn" href="index.php?action=adherents">
+            Ouvrir
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>💳 Abonnements</h3>
+
+        <div class="count">
+            <?= $totalAbonnements ?>
         </div>
 
-        <div class="card">
-            <h2>Séances</h2>
-            <p>Gestion des séances</p>
-            <a href="index.php?action=seances">
-                Ouvrir
-            </a>
+        <p>Nombre total des abonnements</p>
+
+        <a class="btn" href="index.php?action=abonnements">
+            Ouvrir
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>🏃 Séances</h3>
+
+        <div class="count">
+            <?= $totalSeances ?>
         </div>
 
-        <div class="card">
-            <h2>Activités</h2>
-            <p>Gestion des activités</p>
-            <a href="index.php?action=activites">
-                Ouvrir
-            </a>
-        </div>
+        <p>Nombre total des séances</p>
 
-        <div class="card">
-            <h2>Salles</h2>
-            <p>Gestion des salles</p>
-            <a href="index.php?action=salles">
-                Ouvrir
-            </a>
-        </div>
-
-        <div class="card">
-            <h2>Équipements</h2>
-            <p>Gestion des équipements</p>
-            <a href="index.php?action=equipements">
-                Ouvrir
-            </a>
-        </div>
-
+        <a class="btn" href="index.php?action=seances">
+            Ouvrir
+        </a>
     </div>
 
 </div>
 
-</body>
-</html>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

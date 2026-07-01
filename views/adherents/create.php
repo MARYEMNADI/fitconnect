@@ -1,43 +1,139 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Ajouter un adhérent</title>
-</head>
-<body>
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
 
-    <h1>Ajouter un adhérent</h1>
+<div class="container">
 
-    <form action="index.php?action=store-adherent" method="POST">
+    <div class="form-card">
 
-        <label>Nom :</label><br>
-        <input type="text" name="nom" required><br><br>
+        <h2>Ajouter un adhérent</h2>
 
-        <label>Prénom :</label><br>
-        <input type="text" name="prenom" required><br><br>
+        <form action="index.php?action=store-adherent" method="POST">
 
-        <label>Email :</label><br>
-        <input type="email" name="email" required><br><br>
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" name="nom" required>
+            </div>
 
-        <label>Téléphone :</label><br>
-        <input type="text" name="telephone"><br><br>
+            <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" name="prenom" required>
+            </div>
 
-        <label>Date de naissance :</label><br>
-        <input type="date" name="date_naissance"><br><br>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email" required>
+            </div>
 
-        <label>Date d'inscription :</label><br>
-        <input type="date" name="date_inscription" required><br><br>
+            <div class="form-group">
+                <label>Téléphone</label>
+                <input type="text" name="telephone">
+            </div>
 
-        <label>ID Salle :</label><br>
-        <input type="number" name="id_salle" min="1" required><br><br>
+            <div class="form-group">
+                <label>Date de naissance</label>
+                <input type="date" name="date_naissance">
+            </div>
 
-        <button type="submit">Ajouter</button>
+            <div class="form-group">
+                <label>Date d'inscription</label>
+                <input type="date" name="date_inscription" required>
+            </div>
 
-        <a href="index.php?action=adherents">
-            <button type="button">Annuler</button>
-        </a>
+            <div class="form-group">
+                <label>ID Salle</label>
+                <input type="number" name="id_salle" min="1" required>
+            </div>
 
-    </form>
+            <div class="actions">
 
-</body>
-</html>
+                <button class="btn btn-save" type="submit">
+                    Ajouter
+                </button>
+
+                <a class="btn btn-cancel"
+                   href="index.php?action=adherents">
+                    Annuler
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<style>
+
+.container{
+    width:90%;
+    margin:40px auto;
+}
+
+.form-card{
+    max-width:650px;
+    margin:auto;
+    background:#fff;
+    padding:35px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.form-card h2{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.form-group input{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+}
+
+.actions{
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:6px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+}
+
+.btn-save{
+    background:#27ae60;
+}
+
+.btn-save:hover{
+    background:#219150;
+}
+
+.btn-cancel{
+    background:#e74c3c;
+    margin-left:10px;
+}
+
+.btn-cancel:hover{
+    background:#c0392b;
+}
+
+</style>
+
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

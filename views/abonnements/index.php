@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des abonnements</title>
+<?php require_once __DIR__ . '/../layouts/header.php'; ?>
+
 <style>
 
 *{
@@ -15,7 +12,6 @@ body{
     font-family:Arial, sans-serif;
     background:#f4f7fb;
     color:#333;
-    padding:40px;
 }
 
 h1{
@@ -51,7 +47,7 @@ tr:nth-child(even){
 }
 
 tr:hover{
-    background:#e0f2fe;
+    background:#eef4ff;
 }
 
 a{
@@ -65,7 +61,7 @@ a{
     color:white;
     font-size:14px;
     font-weight:bold;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .add{
@@ -93,15 +89,12 @@ a{
 }
 
 </style>
-</head>
-
-<body>
 
 <h1>Liste des abonnements</h1>
 
 <p>
     <a class="btn add" href="index.php?action=create-abonnement">
-        Ajouter un abonnement
+        + Ajouter un abonnement
     </a>
 </p>
 
@@ -118,56 +111,49 @@ a{
         <th>Actions</th>
     </tr>
 
-    <?php if (!empty($abonnements)): ?>
+<?php if(!empty($abonnements)): ?>
 
-        <?php foreach ($abonnements as $abonnement): ?>
+<?php foreach($abonnements as $abonnement): ?>
 
-        <tr>
+<tr>
 
-            <td><?= $abonnement->getId(); ?></td>
+    <td><?= $abonnement->getId(); ?></td>
+    <td><?= $abonnement->getType(); ?></td>
+    <td><?= $abonnement->getDateDebut(); ?></td>
+    <td><?= $abonnement->getDateFin(); ?></td>
+    <td><?= $abonnement->getPrix(); ?> DH</td>
+    <td><?= $abonnement->getStatut(); ?></td>
+    <td><?= $abonnement->getAdherentId(); ?></td>
 
-            <td><?= $abonnement->getType(); ?></td>
+    <td>
 
-            <td><?= $abonnement->getDateDebut(); ?></td>
+        <a class="btn edit"
+        href="index.php?action=edit-abonnement&id=<?= $abonnement->getId(); ?>">
+            Modifier
+        </a>
 
-            <td><?= $abonnement->getDateFin(); ?></td>
+        <a class="btn delete"
+        href="index.php?action=delete-abonnement&id=<?= $abonnement->getId(); ?>"
+        onclick="return confirm('Voulez-vous supprimer cet abonnement ?');">
+            Supprimer
+        </a>
 
-            <td><?= $abonnement->getPrix(); ?> DH</td>
+    </td>
 
-            <td><?= $abonnement->getStatut(); ?></td>
+</tr>
 
-            <td><?= $abonnement->getAdherentId(); ?></td>
+<?php endforeach; ?>
 
-            <td>
+<?php else: ?>
 
-                <a class="btn edit"
-                   href="index.php?action=edit-abonnement&id=<?= $abonnement->getId(); ?>">
-                    Modifier
-                </a>
+<tr>
+    <td colspan="8">
+        Aucun abonnement trouvé.
+    </td>
+</tr>
 
-                <a class="btn delete"
-                   href="index.php?action=delete-abonnement&id=<?= $abonnement->getId(); ?>"
-                   onclick="return confirm('Voulez-vous supprimer cet abonnement ?');">
-                    Supprimer
-                </a>
-
-            </td>
-
-        </tr>
-
-        <?php endforeach; ?>
-
-    <?php else: ?>
-
-        <tr>
-            <td colspan="8">
-                Aucun abonnement trouvé.
-            </td>
-        </tr>
-
-    <?php endif; ?>
+<?php endif; ?>
 
 </table>
 
-</body>
-</html>
+<?php require_once __DIR__ . '/../layouts/footer.php'; ?>

@@ -1,21 +1,31 @@
 <?php
 
+require_once __DIR__ . '/../app/Controllers/DashboardController.php';
 require_once __DIR__ . '/../app/Controllers/AdherentController.php';
 require_once __DIR__ . '/../app/Controllers/AbonnementController.php';
 require_once __DIR__ . '/../app/Controllers/SeanceController.php';
 
-$action = $_GET['action'] ?? 'adherents';
+// Action par défaut
+$action = $_GET['action'] ?? 'dashboard';
 
-$adherentController = new AdherentController();
-$abonnementController = new AbonnementController();
-$seanceController = new SeanceController();
+// Instanciation des contrôleurs
+$dashboardController   = new DashboardController();
+$adherentController    = new AdherentController();
+$abonnementController  = new AbonnementController();
+$seanceController      = new SeanceController();
 
 switch ($action) {
 
     // ==========================
+    // Dashboard
+    // ==========================
+    case 'dashboard':
+        $dashboardController->index();
+        break;
+
+    // ==========================
     // Adhérents
     // ==========================
-
     case 'adherents':
         $adherentController->index();
         break;
@@ -40,11 +50,9 @@ switch ($action) {
         $adherentController->delete();
         break;
 
-
     // ==========================
     // Abonnements
     // ==========================
-
     case 'abonnements':
         $abonnementController->index();
         break;
@@ -69,11 +77,9 @@ switch ($action) {
         $abonnementController->delete();
         break;
 
-
     // ==========================
     // Séances
     // ==========================
-
     case 'seances':
         $seanceController->index();
         break;
@@ -98,12 +104,10 @@ switch ($action) {
         $seanceController->delete();
         break;
 
-
     // ==========================
     // 404
     // ==========================
-
     default:
-        echo "<h2>404 - Page introuvable</h2>";
+        echo "<h1>404 - Page introuvable</h1>";
         break;
 }

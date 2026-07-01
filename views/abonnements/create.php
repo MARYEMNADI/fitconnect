@@ -4,143 +4,181 @@
     <meta charset="UTF-8">
     <title>Ajouter un abonnement</title>
 
- <style>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        body{
+            background:#f4f6f9;
+        }
 
-body{
-    font-family:Arial, sans-serif;
-    background:#f4f7fb;
-    color:#333;
-    padding:40px;
-}
+        header{
+            background:#2c3e50;
+            color:#fff;
+            padding:20px;
+            text-align:center;
+        }
 
-h1{
-    color:#1e3a8a;
-    margin-bottom:20px;
-}
+        nav{
+            background:#34495e;
+            padding:15px;
+            text-align:center;
+        }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-    background:#fff;
-    border-radius:10px;
-    overflow:hidden;
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
-}
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin:0 15px;
+            font-weight:bold;
+        }
 
-th,
-td{
-    padding:14px;
-    text-align:center;
-    border-bottom:1px solid #e5e7eb;
-}
+        nav a:hover{
+            color:#3498db;
+        }
 
-th{
-    background:#2563eb;
-    color:white;
-    font-size:15px;
-}
+        .container{
+            width:60%;
+            margin:40px auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.1);
+        }
 
-tr:nth-child(even){
-    background:#f8fafc;
-}
+        h2{
+            text-align:center;
+            color:#2c3e50;
+            margin-bottom:25px;
+        }
 
-tr:hover{
-    background:#e0f2fe;
-}
+        label{
+            display:block;
+            margin-top:15px;
+            margin-bottom:5px;
+            font-weight:bold;
+        }
 
-a{
-    text-decoration:none;
-}
+        input,
+        select{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
 
-.btn{
-    display:inline-block;
-    padding:8px 16px;
-    border-radius:6px;
-    color:white;
-    font-size:14px;
-    font-weight:bold;
-    transition:0.3s;
-}
+        .buttons{
+            margin-top:25px;
+            display:flex;
+            justify-content:space-between;
+        }
 
-.add{
-    background:#22c55e;
-}
+        .btn{
+            padding:10px 25px;
+            text-decoration:none;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:16px;
+        }
 
-.add:hover{
-    background:#16a34a;
-}
+        .btn-success{
+            background:#27ae60;
+            color:white;
+        }
 
-.edit{
-    background:#3b82f6;
-}
+        .btn-success:hover{
+            background:#229954;
+        }
 
-.edit:hover{
-    background:#2563eb;
-}
+        .btn-secondary{
+            background:#7f8c8d;
+            color:white;
+        }
 
-.delete{
-    background:#ef4444;
-}
+        .btn-secondary:hover{
+            background:#636e72;
+        }
 
-.delete:hover{
-    background:#dc2626;
-}
-
-</style>
+        footer{
+            margin-top:50px;
+            background:#2c3e50;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+    </style>
 
 </head>
-
 <body>
 
-<h1>Ajouter un abonnement</h1>
+<header>
+    <h1>FitConnect</h1>
+    <p>Gestion des abonnements</p>
+</header>
 
-<form action="index.php?action=store-abonnement" method="POST">
+<nav>
+    <a href="index.php?action=dashboard">Dashboard</a>
+    <a href="index.php?action=adherents">Adhérents</a>
+    <a href="index.php?action=abonnements">Abonnements</a>
+    <a href="index.php?action=seances">Séances</a>
+</nav>
 
-    <label>Type</label>
-    <select name="type" required>
-        <option value="">-- Choisir --</option>
-        <option value="mensuel">Mensuel</option>
-        <option value="trimestriel">Trimestriel</option>
-        <option value="annuel">Annuel</option>
-    </select>
+<div class="container">
 
-    <label>Date début</label>
-    <input type="date" name="date_debut" required>
+    <h2>Ajouter un abonnement</h2>
 
-    <label>Date fin</label>
-    <input type="date" name="date_fin" required>
+    <form action="index.php?action=store-abonnement" method="POST">
 
-    <label>Prix</label>
-    <input type="number" step="0.01" name="prix" required>
+        <label>Type</label>
+        <select name="type" required>
+            <option value="">-- Choisir --</option>
+            <option value="mensuel">Mensuel</option>
+            <option value="trimestriel">Trimestriel</option>
+            <option value="annuel">Annuel</option>
+        </select>
 
-    <label>Statut</label>
-    <select name="statut" required>
-        <option value="actif">Actif</option>
-        <option value="expire">Expiré</option>
-        <option value="annule">Annulé</option>
-    </select>
+        <label>Date début</label>
+        <input type="date" name="date_debut" required>
 
-    <label>ID Adhérent</label>
-    <input type="number" name="id_adherent" required>
+        <label>Date fin</label>
+        <input type="date" name="date_fin" required>
 
-    <br><br>
+        <label>Prix</label>
+        <input type="number" step="0.01" name="prix" required>
 
-    <button type="submit">
-        Enregistrer
-    </button>
+        <label>Statut</label>
+        <select name="statut" required>
+            <option value="actif">Actif</option>
+            <option value="expire">Expiré</option>
+            <option value="annule">Annulé</option>
+        </select>
 
-    <a href="index.php?action=abonnements">
-        Retour
-    </a>
+        <label>ID Adhérent</label>
+        <input type="number" name="id_adherent" required>
 
-</form>
+        <div class="buttons">
+
+            <button type="submit" class="btn btn-success">
+                Enregistrer
+            </button>
+
+            <a href="index.php?action=abonnements" class="btn btn-secondary">
+                Retour
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 FitConnect | Tous droits réservés</p>
+</footer>
 
 </body>
 </html>
